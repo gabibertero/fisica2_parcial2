@@ -4,10 +4,8 @@ Preguntero y desarrollos para el 2º parcial de Física II (UTN FRC): teórico d
 
 ## Qué tiene
 
-- **Practicar**: preguntas en orden aleatorio, con dificultad básica, media y difícil.
-  - Opción múltiple: si te equivocás, te explica por qué la que marcaste está mal.
-  - Dos renglones: el formato real del parcial, con respuesta modelo y palabras clave.
-  - Desarrollos: escribís en papel, destapás y te autoevaluás.
+- **Practicar**: preguntas de opción múltiple en orden aleatorio, con dificultad básica, media y difícil, corregidas al instante. Si te equivocás, te explica por qué la que marcaste está mal.
+  - Desarrollos (opcional): escribís en papel, destapás y pasás al siguiente, sin corrección manual.
   - Filtros por tipo, parte (teórico o laboratorio), dificultad, "solo lo que dijo el profe" y "solo mis errores".
 - **Desarrollos**: 30 desarrollos con dibujo esquemático y solo la lógica matemática, como pide la consigna, con qué es cada letra y cómo leer el dibujo. Prioridad de 1 a 5 estrellas: "por prioridad" los da de 5★ a 1★, mezclando dentro de cada nivel. El modo examen tapa todo menos la consigna.
 - **Laboratorio**: TP1 calorimetría y TP2 instrumentos de medición, etiquetados como laboratorio.
@@ -18,7 +16,6 @@ Preguntero y desarrollos para el 2º parcial de Física II (UTN FRC): teórico d
 |---|---|
 | `1`–`4` | elegir opción |
 | `Enter` / `Espacio` | mostrar la respuesta o pasar a la siguiente |
-| `1` `2` `3` | autoevaluar: bien, a medias, no me salió |
 | `Esc` | terminar la tanda |
 
 ## Estructura
@@ -29,6 +26,7 @@ parcial2/
   css/app.css         estilos (claro y oscuro, celular)
   js/preguntas.js         banco de preguntas (opción múltiple, dos renglones, laboratorio)
   js/preguntas-extra.js   preguntas tomadas de la carpeta de Andrade
+  js/preguntas-mc2.js     más preguntas de opción múltiple (teórico y laboratorio)
   js/desarrollos.js       desarrollos: dibujo SVG + líneas TeX
   js/desarrollos-extra.js desarrollos de la carpeta de Andrade
   js/leyendas.js          qué es cada letra y cómo leer cada dibujo

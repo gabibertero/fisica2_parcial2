@@ -215,28 +215,4 @@ window.PREGUNTAS.push(
  k:"Espira = dipolo magnético."},
 
 // ---------- escritas ----------
-{id:"xe-pot1", tipo:"esc", tag:"teorico", tema:"pot", dif:2,
- q:"¿Por qué para un plano infinito no se puede definir V = 0 en el infinito?",
- m:"Porque el potencial <b>varía linealmente</b> con la distancia al plano, V(z) = −σ|z|/(2ε₀) + C, y <b>no tiende a un valor</b> en el infinito: se usa una <b>constante arbitraria</b>.",
- kw:["varía linealmente","no tiende a un valor","constante arbitraria"]},
-{id:"xe-con1", tipo:"esc", tag:"teorico", tema:"con", dif:2,
- q:"¿Qué es una jaula de Faraday y por qué funciona?",
- m:"Es un <b>conductor hueco</b>: en equilibrio las cargas se ubican en la <b>superficie</b> y el <b>campo en la cavidad es nulo</b>, aunque haya campo afuera.",
- kw:["conductor hueco","cargas en la superficie","E = 0 en la cavidad"]},
-{id:"xe-cap1", tipo:"esc", tag:"teorico", tema:"cap", dif:3,
- q:"¿Qué pasa con la energía de un capacitor aislado al introducir un dieléctrico?",
- m:"Como <b>Q queda fija</b> y C aumenta K veces, la energía <b>disminuye</b>: U = U₀/K. Esa energía es el trabajo del campo, que <b>atrae al dieléctrico</b>.",
- kw:["Q fija","disminuye, U₀/K","atrae al dieléctrico"]},
-{id:"xe-mag1", tipo:"esc", tag:"teorico", tema:"mag", dif:2,
- q:"¿Qué fuerza aparece entre dos conductores paralelos con corriente?",
- m:"Cada uno está en el <b>campo del otro</b>: se <b>atraen</b> si las corrientes tienen el <b>mismo sentido</b> y se <b>repelen</b> si son opuestas, con F/l = μ₀I₁I₂/(2πr).",
- kw:["campo del otro","mismo sentido: se atraen","opuestas: se repelen"]},
-{id:"xe-amp1", tipo:"esc", tag:"teorico", tema:"amp", dif:2,
- q:"¿Cuánto vale la circulación de B en una curva que no encierra corriente? ¿Significa que B = 0?",
- m:"Vale <b>cero</b>, porque no hay <b>corriente concatenada</b>; pero <b>no significa que B = 0</b>: los aportes de un tramo se anulan con los de otro.",
- kw:["cero","no hay corriente concatenada","B no es cero"]},
-{id:"xe-fm1", tipo:"esc", tag:"teorico", tema:"mag", dif:1,
- q:"¿Cuándo es nula la fuerza sobre un conductor con corriente en un campo uniforme?",
- m:"Cuando el conductor es <b>paralelo a B</b>: F = I·l × B y el <b>producto vectorial</b> de vectores paralelos es <b>cero</b>.",
- kw:["paralelo a B","producto vectorial","cero"]}
 );

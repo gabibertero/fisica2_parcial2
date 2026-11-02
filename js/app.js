@@ -48,7 +48,8 @@ const TIPO_TXT = {mc:"Opción múltiple", esc:"Dos renglones", dev:"Desarrollo"}
 const DIF_TXT = {1:"●", 2:"●●", 3:"●●●"};
 
 // ---------- errores guardados ----------
-let errs = new Set(store.get("err", []));
+const ALL_IDS = new Set(ALL.map(it => it.id));
+let errs = new Set(store.get("err", []).filter(id => ALL_IDS.has(id)));
 function saveErrs(){ store.set("err", [...errs]); $("#n-err").textContent = errs.size; }
 
 // ---------- navegación ----------
@@ -98,7 +99,7 @@ function whyBlock(d){
 // PRACTICAR
 // =====================================================
 const setup = $("#setup"), run = $("#run"), endV = $("#end"), card = $("#card");
-let deck = [], idx = 0, state = "idle", cur = null, results = [];
+let deck = [], idx = 0, state = "idle", cur = null, results = [], seenDevs = 0;
 
 function readFilters(){
   const tipos = $$('input[name="tipo"]:checked').map(i => i.value);
@@ -126,7 +127,7 @@ function start(list){
   if (!p.length) return;
   p = p.every(it => it.tipo === "dev") ? tierShuffle(p) : shuffle(p);
   if (!list && f.cant) p = p.slice(0, f.cant);
-  deck = p; idx = 0; results = [];
+  deck = p; idx = 0; results = []; seenDevs = 0;
   setup.hidden = true; endV.hidden = true; run.hidden = false;
   show();
   window.scrollTo({top:0});
@@ -232,11 +233,12 @@ function revealDev(){
   card.querySelector(".reveal-cover").remove();
   card.querySelector(".actions").remove();
   const fb = card.querySelector(".fb");
-  fb.innerHTML = `${sheetBody(d, false)}${whyBlock(d)}${gradeBtns()}`;
+  fb.innerHTML = `${sheetBody(d, false)}${whyBlock(d)}${nextBtn()}`;
   fb.hidden = false;
   typeset(fb);
-  state = "grade";
-  bindGrade();
+  seenDevs++;
+  state = "done";
+  bindNext();
 }
 
 function gradeBtns(){
@@ -274,7 +276,22 @@ function finish(){
   if (run.hidden) return;
   run.hidden = true;
   state = "idle";
-  if (!results.length){ setup.hidden = false; updatePoolN(); return; }
+  if (!results.length){
+    if (!seenDevs){ setup.hidden = false; updatePoolN(); return; }
+    const again = deck.slice();
+    endV.innerHTML = `<div class="end-card">
+        <div class="score"><span class="big">${seenDevs}</span><span class="muted">desarrollos repasados</span></div>
+        <p class="muted">Los que no te salieron completos, volvé a escribirlos en Modo examen (pestaña Desarrollos) más tarde.</p>
+        <div class="actions">
+          <button type="button" class="btn primary" id="again-miss">Otra vuelta, por prioridad <kbd>Enter</kbd></button>
+          <button type="button" class="btn ghost" id="again-new">Nueva práctica</button>
+        </div></div>`;
+    endV.hidden = false; state = "end";
+    $("#again-miss").addEventListener("click", () => start(again));
+    $("#again-new").addEventListener("click", () => { endV.hidden = true; setup.hidden = false; state = "idle"; updatePoolN(); });
+    window.scrollTo({top:0});
+    return;
+  }
   const total = results.reduce((s, r) => s + r.v, 0);
   const nota = (total / results.length * 10).toFixed(1).replace(".", ",");
   const per = {};
@@ -287,7 +304,7 @@ function finish(){
   }).join("");
   const missed = results.filter(r => r.v < 1).map(r => r.it);
   endV.innerHTML = `<div class="end-card">
-      <div class="score"><span class="big">${nota}</span><span class="muted">/ 10 · ${results.length} respondidas</span></div>
+      <div class="score"><span class="big">${nota}</span><span class="muted">/ 10 · ${results.length} respondidas${seenDevs ? ` · ${seenDevs} desarrollos repasados` : ""}</span></div>
       <p class="muted">Prioridad de repaso por tema (los de arriba primero):</p>
       <div class="bars">${rows}</div>
       ${missed.length ? `<p class="muted" style="margin-top:6px">Para repasar (${missed.length}):</p><ul class="misslist">${missed.map(m => `<li>${esc(m.tipo === "dev" ? m.dev.id + " · " + m.dev.titulo : m.q)}</li>`).join("")}</ul>` : `<p>Sin errores en esta tanda.</p>`}
