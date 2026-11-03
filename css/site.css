@@ -35,6 +35,9 @@ main{max-width:1120px;margin:auto;padding:0 28px}.hero{min-height:440px;padding:
 .model-answer{background:var(--blue-soft);border-left:3px solid var(--blue);border-radius:7px;padding:11px 13px;color:var(--ink);font-size:13px;line-height:1.55}
 .model-answer strong,.model-answer b{color:var(--blue)}
 .question-body mjx-container,.model-answer mjx-container{max-width:100%}
+.answer-diagram{margin:0;padding:10px 12px;background:#f8fafc;border:1px solid var(--line);border-radius:9px;min-width:0}
+.answer-diagram svg{display:block;width:100%;height:auto;max-height:220px}
+.answer-diagram figcaption{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.4;text-align:center}
 @media(max-width:580px){
   .question-unit>h3{font-size:18px}
   .question-card{padding:14px 13px}

@@ -3,12 +3,27 @@ const typeset = (root) => window.MathJax?.typesetPromise?.([root]);
 async function loadContent(target, path) {
   const host = document.querySelector(target);
   try {
-    const response = await fetch(`${path}?v=4`);
+    const response = await fetch(`${path}?v=5`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     host.innerHTML = await response.text();
     if (target === "#development-content") {
       host.querySelectorAll("[data-diagram]").forEach((figure) => {
         figure.innerHTML = window.DIAGRAMAS?.[figure.dataset.diagram] || "";
+      });
+    }
+    if (target === "#question-content") {
+      host.querySelectorAll("[data-question-diagram]").forEach((figure) => {
+        const key = figure.dataset.questionDiagram;
+        figure.innerHTML = window.GRAFICOS_PREGUNTAS?.[key] || "";
+        const captions = {
+          conductor: "Las cargas se ubican en la superficie; el campo resultante dentro del conductor se anula.",
+          dipolo: "Las fuerzas opuestas forman un par que tiende a alinear el dipolo con el campo.",
+          polarizacion: "Las cargas ligadas se desplazan un poco: no atraviesan el aislante.",
+          "capacitor-dielectrico": "Con batería conectada se conserva ΔV y puede entrar más carga; desconectado, Q permanece constante.",
+          voltimetro: "El voltímetro se conecta en paralelo con el elemento.",
+          amperimetro: "El amperímetro se intercala en serie para medir la corriente del circuito."
+        };
+        if (figure.innerHTML) figure.insertAdjacentHTML("beforeend", `<figcaption>${captions[key] || "Esquema conceptual."}</figcaption>`);
       });
     }
     await typeset(host);

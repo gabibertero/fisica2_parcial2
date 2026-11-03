@@ -5,6 +5,7 @@
 ### Pregunta 1 · Campo eléctrico en un conductor
 **Consigna:** ¿Por qué el campo eléctrico en el interior de un conductor es nulo cuando está en equilibrio electrostático?
 
+**Gráfico:** conductor
 **Respuesta modelo:** Las cargas libres se redistribuyen sobre la superficie hasta que el campo que generan cancela el campo eléctrico interior. En equilibrio electrostático, el campo resultante dentro del material es nulo.
 
 ### Pregunta 2 · Dipolo eléctrico
@@ -15,6 +16,7 @@
 ### Pregunta 3 · Dipolo en un campo uniforme
 **Consigna:** ¿Qué sucede cuando colocamos un dipolo eléctrico en un campo eléctrico uniforme y por qué tiende a alinearse con él?
 
+**Gráfico:** dipolo
 **Respuesta modelo:** En un campo eléctrico uniforme actúan fuerzas iguales y opuestas sobre las cargas del dipolo, produciendo un torque que tiende a alinearlo con el campo. Su módulo es \(\tau=pE\sin\theta\).
 
 ### Pregunta 4 · Energía potencial del dipolo
@@ -47,11 +49,13 @@
 ### Pregunta 9 · Polarización de un dieléctrico
 **Consigna:** ¿Qué significa que un dieléctrico se polarice al colocarlo en un campo eléctrico?
 
+**Gráfico:** polarizacion
 **Respuesta modelo:** Sus cargas positivas y negativas se desplazan ligeramente en sentidos opuestos, sin circular libremente. Esa separación genera un campo interno que se opone parcialmente al campo aplicado.
 
 ### Pregunta 10 · Dieléctrico y capacidad
 **Consigna:** ¿Qué es un dieléctrico y por qué aumenta la capacidad de un capacitor cuando se introduce entre sus placas?
 
+**Gráfico:** capacitor-dielectrico
 **Respuesta modelo:** Un dieléctrico es un material aislante que se coloca entre las placas. Al polarizarse, genera un campo opuesto al de las placas y aumenta la capacidad de almacenar carga para un mismo voltaje. Si el capacitor está desconectado, su carga no aumenta; disminuye su diferencia de potencial.
 
 ### Pregunta 11 · Energía del capacitor
@@ -170,11 +174,13 @@
 ### Pregunta · Medir tensión
 **Consigna:** ¿Cómo se conecta un voltímetro para medir la diferencia de potencial en un componente?
 
+**Gráfico:** voltimetro
 **Respuesta breve:** Se conecta en paralelo con el componente, respetando la polaridad en corriente continua. Se selecciona un rango superior al valor esperado y luego se reduce si hace falta.
 
 ### Pregunta · Medir corriente
 **Consigna:** ¿Cómo se conecta un amperímetro para medir la corriente que circula por un componente?
 
+**Gráfico:** amperimetro
 **Respuesta breve:** Se intercala en serie con el componente para que la corriente del circuito atraviese el instrumento. Se comienza con el rango más alto y se baja gradualmente.
 
 ### Pregunta · Resistencia interna de los instrumentos

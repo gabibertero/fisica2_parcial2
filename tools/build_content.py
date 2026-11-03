@@ -218,6 +218,9 @@ def build_questions():
             result.append(f'<details class="question-card"><summary>{inline(line[4:])}</summary><div class="question-body">')
         elif line.startswith("**Consigna:**"):
             result.append(f'<p class="question-prompt">{inline(line.removeprefix("**Consigna:**").strip())}</p>')
+        elif line.startswith("**Gráfico:**"):
+            key = escape(line.removeprefix("**Gráfico:**").strip(), quote=True)
+            result.append(f'<figure class="answer-diagram" data-question-diagram="{key}"></figure>')
         elif line.startswith("**Respuesta modelo:**"):
             result.append(f'<p class="model-answer"><b>Respuesta modelo</b><br>{inline(line.removeprefix("**Respuesta modelo:**").strip())}</p></div></details>')
         elif line.startswith("**Respuesta breve:**"):
