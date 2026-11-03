@@ -9,22 +9,58 @@
     .s{font:12px system-ui,sans-serif;fill:#617187}.e{font:italic 15px Georgia,serif;fill:#315cbd}
   </style>`;
   const svg = (label, body) => `<svg viewBox="0 0 360 160" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg">${style}${body}</svg>`;
-  const arrow = (x1, y1, x2, y2, cls = "f") => `<path class="${cls}" d="M${x1} ${y1}L${x2} ${y2}" marker-end="url(#arr)"/>`;
+  const arrow = (x1, y1, x2, y2, cls = "f") => `<path class="${cls}" d="M${x1} ${y1}L${x2} ${y2}" marker-end="url(#${cls === "w" ? "arrdark" : "arr"})"/>`;
   const defs = `<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#315cbd"/></marker><marker id="arrdark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#27364b"/></marker></defs>`;
   const cap = (x, y, label) => `<path class="w" d="M${x-12} ${y-17}V${y+17}M${x+2} ${y-17}V${y+17}"/><text class="s" x="${x-8}" y="${y-25}">${label}</text>`;
 
   window.DIAGRAMAS = {
-    1: svg("Trayectoria desde i hasta f en un campo eléctrico", `${defs}<path class="w" d="M45 112C105 35 210 35 300 105"/><circle class="p" cx="45" cy="112" r="4"/><circle class="p" cx="300" cy="105" r="4"/><text class="t" x="31" y="137">i</text><text class="t" x="301" y="128">f</text>${arrow(141,72,195,72)}<text class="e" x="161" y="60">E</text>${arrow(155,88,190,88,"w")}<text class="s" x="162" y="107">dℓ</text><text class="s" x="118" y="34">recorrido</text>`),
-    2: svg("Carga puntual y distancia radial hasta el punto de observación", `${defs}<circle class="q" cx="95" cy="82" r="19"/><text class="t" x="90" y="88">q</text><circle class="p" cx="292" cy="82" r="4"/><text class="t" x="300" y="87">P</text><path class="d" d="M114 82H286"/>${arrow(178,82,239,82)}<text class="e" x="207" y="69">r, E</text><text class="s" x="153" y="110">dirección radial</text>`),
+    1: svg("Trayectoria desde i hasta f en un campo eléctrico uniforme; diferencial de recorrido tangente a la trayectoria", `${defs}<path class="w" d="M45 112C105 35 210 35 300 105"/><circle class="p" cx="45" cy="112" r="4"/><circle class="p" cx="300" cy="105" r="4"/><text class="t" x="31" y="137">i</text><text class="t" x="301" y="128">f</text>${arrow(141,78,195,78)}<text class="e" x="161" y="66">E</text>${arrow(142,53,181,52)}<text class="s" x="167" y="43">dℓ</text><text class="s" x="111" y="27">recorrido</text>`),
+    2: svg("Carga puntual positiva y distancia radial hasta el punto de observación", `${defs}<circle class="q" cx="95" cy="82" r="19"/><text class="t" x="87" y="88">+q</text><circle class="p" cx="292" cy="82" r="4"/><text class="t" x="300" y="87">P</text><path class="d" d="M114 82H286"/>${arrow(178,82,239,82)}<text class="e" x="207" y="69">r</text><text class="s" x="153" y="110">radial; E apunta hacia afuera</text>`),
     3: svg("Carga encerrada por una superficie gaussiana esférica", `${defs}<circle class="g" cx="176" cy="82" r="52"/><circle class="q" cx="176" cy="82" r="15"/><text class="t" x="171" y="88">Q</text><path class="d" d="M176 82H228"/><text class="e" x="198" y="74">r</text>${arrow(226,82,255,82)}<text class="s" x="252" y="76">dS</text><text class="s" x="112" y="151">superficie cerrada</text>`),
-    4: svg("Plano infinito cargado y eje perpendicular z", `${defs}<path class="w" d="M92 26V136"/><text class="t" x="45" y="34">plano σ</text><path class="d" d="M92 81H321"/><text class="e" x="304" y="71">z</text><circle class="p" cx="155" cy="81" r="4"/><circle class="p" cx="268" cy="81" r="4"/><text class="s" x="140" y="108">i</text><text class="s" x="263" y="108">f</text>${arrow(172,55,225,55)}<text class="e" x="190" y="44">E</text><text class="s" x="200" y="103">dℓ ∥ z</text>`),
-    5: svg("Dipolo eléctrico en un campo uniforme", `${defs}${arrow(35,80,325,80)}<text class="e" x="309" y="66">E</text><path class="w" d="M117 112L242 48"/><circle cx="117" cy="112" r="18" fill="#eaf0fc" stroke="#315cbd" stroke-width="2"/><circle cx="242" cy="48" r="18" fill="#eaf0fc" stroke="#315cbd" stroke-width="2"/><text class="t" x="108" y="118">+q</text><text class="t" x="233" y="54">−q</text><path class="d" d="M117 112L242 48"/><text class="s" x="167" y="100">d</text><path class="f" d="M100 96A30 30 0 0 1 128 83" marker-end="url(#arr)"/><path class="f" d="M230 27A30 30 0 0 1 262 44" marker-end="url(#arr)"/><text class="s" x="164" y="137">par de fuerzas: τ = p × E</text>`),
+    4: svg("Plano infinito con densidad superficial positiva y campo eléctrico saliente a ambos lados", `${defs}<path class="w" d="M92 26V136"/><text class="t" x="43" y="34">plano +σ</text><path class="d" d="M92 81H321"/><text class="e" x="304" y="71">z</text><circle class="p" cx="155" cy="81" r="4"/><circle class="p" cx="268" cy="81" r="4"/><text class="s" x="140" y="108">i</text><text class="s" x="263" y="108">f</text>${arrow(84,55,42,55)}${arrow(106,55,149,55)}<text class="e" x="119" y="44">E</text><text class="s" x="200" y="103">dℓ ∥ z</text>`),
+    5: svg("Dipolo eléctrico en un campo uniforme: fuerzas iguales y opuestas forman un par que produce torque", `${defs}${arrow(35,80,325,80)}<text class="e" x="309" y="66">E</text><path class="w" d="M117 112L242 48"/><circle cx="117" cy="112" r="18" fill="#eaf0fc" stroke="#315cbd" stroke-width="2"/><circle cx="242" cy="48" r="18" fill="#eaf0fc" stroke="#315cbd" stroke-width="2"/><text class="t" x="108" y="118">+q</text><text class="t" x="233" y="54">−q</text><path class="d" d="M117 112L242 48"/><text class="s" x="167" y="100">d</text>${arrow(137,124,174,124)}<text class="s" x="144" y="143">F₊</text>${arrow(222,36,185,36)}<text class="s" x="194" y="23">F₋</text><text class="s" x="165" y="154">par de fuerzas → τ</text>`),
     6: svg("Capacitor de dos conductores con cargas opuestas", `${defs}<path class="w" d="M131 30V130M229 30V130"/><text class="t" x="106" y="25">+Q</text><text class="t" x="232" y="25">−Q</text>${arrow(149,80,211,80)}<text class="e" x="176" y="68">E</text><path class="d" d="M131 145H229"/><path class="d" d="M131 139V150M229 139V150"/><text class="s" x="166" y="157">ΔV</text><text class="s" x="141" y="47">placas conductoras</text>`),
     7: svg("Capacitor plano, área A y separación d", `${defs}<path class="w" d="M103 26V134M251 26V134"/><text class="t" x="69" y="33">+Q</text><text class="t" x="255" y="33">−Q</text>${arrow(125,80,229,80)}<text class="e" x="174" y="68">E</text><path class="d" d="M103 144H251M103 137V151M251 137V151"/><text class="s" x="174" y="159">d</text><path class="d" d="M103 42H251"/><text class="s" x="169" y="37">A</text><text class="s" x="129" y="111">C = ε₀A/d</text>`),
-    8: svg("Dos capacitores conectados en paralelo entre los nodos a y b", `${defs}<path class="w" d="M76 30V132M284 30V132M76 53H164M190 53H284M76 109H164M190 109H284"/><circle class="p" cx="76" cy="53" r="5"/><circle class="p" cx="284" cy="53" r="5"/><text class="t" x="60" y="25">a</text><text class="t" x="291" y="25">b</text>${cap(177,53,"C₁")}${cap(177,109,"C₂")}<text class="s" x="123" y="148">ΔV₁ = ΔV₂</text>`),
-    9: svg("Dos capacitores conectados en serie en una rama", `${defs}<path class="w" d="M42 82H123M151 82H211M239 82H318"/>${cap(137,82,"C₁")}${cap(225,82,"C₂")}<text class="t" x="36" y="67">+Q</text><text class="t" x="298" y="67">−Q</text><text class="s" x="104" y="125">misma carga Q</text><text class="s" x="150" y="148">ΔV = V₁ + V₂</text>`),
+    8: svg("Dos capacitores conectados en paralelo entre los mismos nodos a y b", `${defs}<path class="w" d="M76 30V132M284 30V132M76 53H164M190 53H284M76 109H164M190 109H284"/><circle class="p" cx="76" cy="53" r="4"/><circle class="p" cx="284" cy="53" r="4"/><circle class="p" cx="76" cy="109" r="4"/><circle class="p" cx="284" cy="109" r="4"/><text class="t" x="60" y="25">a</text><text class="t" x="291" y="25">b</text>${cap(177,53,"C₁")}${cap(177,109,"C₂")}<text class="s" x="123" y="148">ΔV₁ = ΔV₂</text>`),
+    9: svg("Dos capacitores conectados en serie en una rama: misma magnitud de carga y suma de tensiones", `${defs}<path class="w" d="M42 82H123M151 82H211M239 82H318"/>${cap(137,82,"C₁")}${cap(225,82,"C₂")}<text class="s" x="74" y="125">|Q₁| = |Q₂| = Q</text><text class="s" x="130" y="148">ΔVtotal = ΔV₁ + ΔV₂</text>`),
     10: svg("Conductor óhmico de longitud L y sección S con corriente", `${defs}<path class="w" d="M74 53H286V107H74Z"/><path class="d" d="M74 80H286"/>${arrow(25,80,67,80,"w")}<text class="t" x="28" y="65">I</text>${arrow(117,80,177,80)}<text class="e" x="145" y="67">J, E</text><path class="d" d="M74 125H286M74 119V131M286 119V131"/><text class="s" x="171" y="147">L</text><text class="s" x="299" y="85">S</text><text class="s" x="118" y="43">conductor</text>`),
     11: svg("Fuerza magnética sobre una carga positiva: v a la derecha, B entra en la hoja, F hacia arriba", `${defs}<circle class="q" cx="174" cy="83" r="15"/><text class="t" x="168" y="89">+q</text>${arrow(194,83,282,83)}<text class="e" x="230" y="70">v</text>${arrow(174,64,174,25)}<text class="e" x="185" y="37">F</text><circle cx="116" cy="83" r="14" fill="none" stroke="#168a88" stroke-width="2"/><path d="M106 73L126 93M126 73L106 93" stroke="#168a88" stroke-width="2"/><text class="e" x="83" y="119">B entra (⊗)</text><text class="s" x="202" y="112">F = q(v × B)</text>`),
     12: svg("Ley de Biot–Savart: elemento de corriente, punto A y vector r", `${defs}<path class="w" d="M34 48H326"/>${arrow(75,48,132,48,"w")}<text class="t" x="94" y="35">I</text><path class="f" d="M203 48H235"/><text class="e" x="209" y="34">dℓ</text><circle class="p" cx="171" cy="127" r="5"/><text class="t" x="153" y="151">A</text>${arrow(171,120,223,57)}<text class="e" x="190" y="91">r</text><circle cx="254" cy="112" r="13" fill="none" stroke="#315cbd" stroke-width="2"/><path d="M245 103L263 121M263 103L245 121" stroke="#315cbd" stroke-width="2"/><text class="e" x="272" y="117">dB</text><text class="s" x="185" y="144">r va de A al elemento</text>`)
   };
+
+  // RC curve: show the correct value at one time constant, V_C(τ)=0.63 ε.
+  const rcPlot = document.querySelector(".rc-plot");
+  if (rcPlot) {
+    rcPlot.querySelector(".guide")?.setAttribute("d", "M52 22H395 M52 80H130 M130 80V180");
+    rcPlot.querySelector(".curve")?.setAttribute("d", "M52 180 C76 118 99 87 130 80 C186 54 240 25 395 22");
+    const epsilon = [...rcPlot.querySelectorAll("text")].find((node) => node.textContent.trim() === "ε");
+    if (epsilon) {
+      epsilon.setAttribute("x", "57");
+      epsilon.setAttribute("y", "27");
+    }
+    if (!rcPlot.querySelector(".tau-level")) {
+      const level = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      level.setAttribute("class", "tau-level");
+      level.setAttribute("x", "0");
+      level.setAttribute("y", "84");
+      level.textContent = "0,63ε";
+      rcPlot.append(level);
+    }
+  }
+
+  // In the Biot–Savart sketch, r points from the current element to the observation point.
+  const biotSvg = document.querySelector(".biot-card > svg");
+  if (biotSvg) {
+    biotSvg.setAttribute("aria-label", "Elemento de corriente dℓ, punto de observación A y vector r dirigido desde el elemento hacia A; dB entra en el plano");
+    const geom = biotSvg.querySelector(".geom");
+    if (geom) {
+      geom.setAttribute("d", "M230 42L171 136");
+      geom.setAttribute("marker-end", "url(#biot-r-arrow)");
+      if (!biotSvg.querySelector("#biot-r-arrow")) {
+        const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        defs.innerHTML = '<marker id="biot-r-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#168a88"/></marker>';
+        biotSvg.prepend(defs);
+      }
+    }
+  }
 })();

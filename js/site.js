@@ -20,8 +20,15 @@ async function loadContent(target, path) {
 
 Promise.all([
   loadContent("#formula-content", "content/formulas.html"),
+  loadContent("#question-content", "content/preguntas.html"),
   loadContent("#development-content", "content/desarrollos.html")
 ]);
+
+document.querySelector("#question-content").addEventListener("toggle", (event) => {
+  if (event.target.matches("details.question-card") && event.target.open) {
+    typeset(event.target);
+  }
+}, true);
 
 document.querySelector("#toggle-all").addEventListener("click", (event) => {
   const cards = [...document.querySelectorAll("#development-content details")];

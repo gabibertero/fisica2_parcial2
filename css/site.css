@@ -11,4 +11,33 @@ main{max-width:1120px;margin:auto;padding:0 28px}.hero{min-height:440px;padding:
 @media(max-width:960px){.formula-content{grid-template-columns:1fr}}
 @media(max-width:580px){.top{height:auto;min-height:65px;padding:10px 16px;gap:10px;align-items:flex-start;flex-direction:column}.top nav{width:100%;gap:1px}.top nav a{padding:7px 10px;font-size:12px}main{padding:0 16px}.hero{display:block;padding:45px 0 20px}.hero-art{margin-top:28px;height:210px}.hero-meta{gap:10px;justify-content:space-between;margin-top:21px}.hero-meta span{gap:5px;display:block}.hero-meta b{display:block;font-size:10px}.hero-actions{gap:12px;flex-wrap:wrap}.intro{font-size:15px}.section-head{align-items:flex-start;flex-direction:column;gap:8px}.section-head>p{font-size:12px}.compare-intro{align-items:flex-start;flex-direction:column;gap:5px}.compare-intro p{max-width:none}.compare-card{padding:13px}.topology{gap:7px}.topology>div{padding:8px}.topology p{min-height:35px}.topology svg{height:58px}.graphic-card{grid-template-columns:1fr;padding:17px}.rc-plot{max-height:150px}.formula-content>article{padding:16px 12px}.formula-content table{font-size:11px}.formula-content td,.formula-content th{padding:7px 5px}.development-content{grid-template-columns:1fr}.dev-toolbar{font-size:11px}.scope-grid{grid-template-columns:1fr}footer{padding:20px 16px;gap:15px;flex-wrap:wrap}footer>span{order:3;width:100%}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}}
-.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain}.table-scroll table{min-width:430px}.table-scroll.cols-3 table{min-width:520px}.table-scroll.cols-4 table{min-width:620px}.dev-drawing{margin:12px 0;padding:8px;background:#f3f6fb;border:1px solid #e1e8f1;border-radius:8px}.dev-drawing svg{display:block;width:100%;max-height:190px}
+.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#b7c6d8 transparent}.table-scroll table{min-width:430px}.table-scroll.cols-3 table{min-width:520px}.table-scroll.cols-4 table{min-width:620px}.dev-drawing{margin:12px 0;padding:8px;background:#f3f6fb;border:1px solid #e1e8f1;border-radius:8px}.dev-drawing svg{display:block;width:100%;max-height:190px}
+
+/* En mobile, preservar el ancho de las tablas con ecuaciones largas y dejar que se deslicen dentro de su tarjeta. */
+@media(max-width:580px){
+  #u9 .table-scroll:first-of-type table{min-width:520px}
+  #u9 .table-scroll:nth-of-type(2) table{min-width:640px}
+  #u10 .table-scroll table{min-width:520px}
+  #u11 .table-scroll table{min-width:620px}
+  .development-content .dev-body li p{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.4}
+}
+
+/* Estilos de preguntas conceptuales integradas al sitio. */
+#question-content{display:grid;gap:22px;align-items:start}
+.question-unit{min-width:0}
+.question-unit>h3{font:700 20px Manrope,sans-serif;margin:0 0 12px;color:var(--ink)}
+.question-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 12px;box-shadow:0 4px 14px rgba(31,52,81,.04)}
+.question-prompt{font-size:14px;line-height:1.5;font-weight:700;color:var(--ink);margin:0 0 10px}
+.question-body{display:grid;gap:10px;font-size:13px;line-height:1.6;color:var(--muted);min-width:0}
+.question-body p{margin:0}
+.question-body ul,.question-body ol{margin:0;padding-left:22px}
+.question-body li+li{margin-top:5px}
+.model-answer{background:var(--blue-soft);border-left:3px solid var(--blue);border-radius:7px;padding:11px 13px;color:var(--ink);font-size:13px;line-height:1.55}
+.model-answer strong,.model-answer b{color:var(--blue)}
+.question-body mjx-container,.model-answer mjx-container{max-width:100%}
+@media(max-width:580px){
+  .question-unit>h3{font-size:18px}
+  .question-card{padding:14px 13px}
+  .question-prompt{font-size:13px}
+  .question-body,.model-answer{font-size:12px}
+}

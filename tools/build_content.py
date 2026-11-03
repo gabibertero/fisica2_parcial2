@@ -10,31 +10,48 @@ ROOT = Path(__file__).resolve().parents[1]
 def inline(value: str) -> str:
     def math_format(raw):
         replacements = {
-            "Ceq": r"C_{\rm eq}", "Req": r"R_{\rm eq}",
+            "Ceq": r"C_{\mathrm{eq}}", "Req": r"R_{\mathrm{eq}}", "Pmax": r"P_{\max}",
             "Qif": r"Q_{i,f}", "Ci": r"C_i", "Ri": r"R_i", "Qi": r"Q_i", "Ii": r"I_i", "Vi": r"V_i",
             "Qf": r"Q_f", "Qtotal": r"Q_{\rm total}", "ΔVtotal": r"\Delta V_{\rm total}",
             "ΔVi": r"\Delta V_i", "ΔVf": r"\Delta V_f", "Itotal": r"I_{\rm total}",
             "Vtotal": r"V_{\rm total}", "Imax": r"I_{\max}", "Vmax": r"V_{\max}",
-            "Icc": r"I_{\rm cc}", "Ientrantes": r"I_{\rm ent}", "Isalientes": r"I_{\rm sal}",
-            "Rsh": r"R_{\rm sh}", "Rs": r"R_s", "Ig": r"I_g", "Rg": r"R_g",
-            "rint": r"r_{\rm int}", "Qcal": r"Q_{\rm cal}",
-            "Qfase": r"Q_{\rm fase}", "VC": r"V_C", "Vt": r"V_t", "Q₀": r"Q_0",
+            "Icc": r"I_{\mathrm{cc}}", "Ientrantes": r"I_{\mathrm{ent}}", "Isalientes": r"I_{\mathrm{sal}}",
+            "Rsh": r"R_{\mathrm{sh}}", "Rs": r"R_s", "Ig": r"I_g", "Rg": r"R_g",
+            "RA": r"R_A", "RV": r"R_V", "Rm": r"R_m", "Rx": r"R_x",
+            "Ra": r"R_a", "Rb": r"R_b", "Rc": r"R_c", "Rd": r"R_d",
+            "rint": r"r_{\mathrm{int}}", "Qcal": r"Q_{\mathrm{cal}}",
+            "Qfase": r"Q_{\mathrm{fase}}", "VC": r"V_C", "Vt": r"V_t", "Q₀": r"Q_0",
             "V₀": r"V_0", "q₀": r"q_0", "BT": r"B_T", "BR": r"B_R",
             "Bz": r"B_z", "Btotal": r"B_{\rm total}", "Bespira": r"B_{\rm espira}",
+            "Bhilo": r"B_{\mathrm{hilo}}", "Rfuga": r"R_{\mathrm{fuga}}", "Wfuente": r"W_{\mathrm{fuente}}",
+            "UC": r"U_C", "WR": r"W_R", "tcarga": r"t_{\mathrm{carga}}", "tdescarga": r"t_{\mathrm{descarga}}",
             "vd": r"v_d", "δm": r"\delta_m", "sᵢ": r"s_i", "Lf": r"L_f", "Lv": r"L_v",
-            "ln": r"\ln", "sin": r"\sin", "tan": r"\tan",
+            "sin": r"\sin", "tan": r"\tan",
         }
+        raw = raw.replace("ΣsiQi", "Σs_iQ_i").replace("si=±1", "s_i=±1")
         for old, new in replacements.items():
             raw = raw.replace(old, new)
         raw = re.sub(r"(?<![A-Za-z\\])([CRIVQ])([0-9])", r"\1_{\2}", raw)
         fraction = re.compile(r"(?P<num>[\w\\{}]+)\s*/\s*(?P<den>\[[^\[\]]+\]|\([^()]*\)|[\w\\{}]+)")
-        raw = fraction.sub(lambda m: rf"\dfrac{{{m.group('num')}}}{{{m.group('den').strip('[]()')}}}", raw)
-        return r"\(" + raw + r"\)"
+        def format_fraction(match):
+            denominator = match.group("den")
+            if (denominator.startswith("[") and denominator.endswith("]")) or (denominator.startswith("(") and denominator.endswith(")")):
+                denominator = denominator[1:-1]
+            return rf"\dfrac{{{match.group('num')}}}{{{denominator}}}"
+        raw = fraction.sub(format_fraction, raw)
+        return r"\(" + escape(raw, quote=False) + r"\)"
 
     value = re.sub(r"`([^`]+)`", lambda m: math_format(m.group(1)), value)
+    math_parts = []
+    def protect_math(match):
+        math_parts.append(escape(match.group(0), quote=False))
+        return f"@@MATH{len(math_parts)-1}@@"
+    value = re.sub(r"\\\((.+?)\\\)|\\\[(.+?)\\\]", protect_math, value)
     value = escape(value, quote=False)
     value = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", value)
     value = re.sub(r"\*(.+?)\*", r"<em>\1</em>", value)
+    for index, math in enumerate(math_parts):
+        value = value.replace(f"@@MATH{index}@@", math)
     return value
 
 
@@ -176,6 +193,42 @@ def build_developments():
     (ROOT / "content/desarrollos.html").write_text("\n".join(result))
 
 
+def build_questions():
+    text = (ROOT / "content/preguntas_conceptuales.md").read_text()
+    result = []
+    current_unit = None
+    for line in text.splitlines():
+        line = line.strip()
+        if line.startswith("# "):
+            continue
+        if line.startswith("## "):
+            if current_unit:
+                result.append("</section>")
+            title = line[3:].strip()
+            if title.startswith("U"):
+                current_unit = title.split(" · ", 1)[0]
+                result.append(f'<section class="question-unit" id="preguntas-{current_unit.lower()}"><h3>{inline(title)}</h3>')
+            elif title.lower().startswith("laboratorio"):
+                current_unit = "LAB"
+                result.append(f'<section class="question-unit lab-questions" id="preguntas-lab"><h3>{inline(title)}</h3>')
+            else:
+                current_unit = None
+            continue
+        if line.startswith("### Pregunta "):
+            result.append(f'<details class="question-card"><summary>{inline(line[4:])}</summary><div class="question-body">')
+        elif line.startswith("**Consigna:**"):
+            result.append(f'<p class="question-prompt">{inline(line.removeprefix("**Consigna:**").strip())}</p>')
+        elif line.startswith("**Respuesta modelo:**"):
+            result.append(f'<p class="model-answer"><b>Respuesta modelo</b><br>{inline(line.removeprefix("**Respuesta modelo:**").strip())}</p></div></details>')
+        elif line.startswith("**Respuesta breve:**"):
+            result.append(f'<p class="model-answer"><b>Respuesta breve</b><br>{inline(line.removeprefix("**Respuesta breve:**").strip())}</p></div></details>')
+        elif line:
+            result.append(f'<p>{inline(line)}</p>')
+    result.append("</section>")
+    (ROOT / "content/preguntas.html").write_text("\n".join(result))
+
+
 if __name__ == "__main__":
     build_formulas()
     build_developments()
+    build_questions()
