@@ -1,185 +1,71 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Física II · 2º Parcial</title>
-<meta name="description" content="Preguntero y desarrollos para el 2º parcial de Física II (UTN FRC): teórico de Andrade y laboratorio.">
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%231f5f4a%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/app.css">
-<script>
-window.MathJax = { tex:{ inlineMath:[['\\(','\\)']], displayMath:[['\\[','\\]']] }, svg:{ fontCache:'global' }, options:{ enableMenu:false }, startup:{ typeset:false } };
-</script>
-<script src="vendor/tex-svg.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Apuntes online de Física II para el segundo parcial: fórmulas U8–U11 y desarrollos teóricos explicados paso a paso.">
+  <title>Física II · Apuntes para el segundo parcial</title>
+  <link rel="stylesheet" href="css/site.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{enableMenu:false}};</script>
+  <script src="vendor/tex-svg.js" defer></script>
+  <script src="content/graficos.js" defer></script>
+  <script src="js/site.js" defer></script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <marker id="aF" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="f-fg"/></marker>
-    <marker id="aE" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="f-e"/></marker>
-    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="f-b"/></marker>
-    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="f-g"/></marker>
-  </defs>
-</svg>
-
-<header class="top">
-  <div class="top-in">
-    <div class="brand"><span class="brand-k">Física II</span><span class="brand-t">2º parcial · Andrade + laboratorio</span></div>
-    <nav class="tabs" role="tablist" aria-label="Secciones">
-      <a href="#practicar" role="tab" id="tab-practicar">Practicar</a>
-      <a href="#desarrollos" role="tab" id="tab-desarrollos">Desarrollos</a>
-      <a href="#como" role="tab" id="tab-como">Cómo estudiar</a>
+  <header class="top">
+    <a class="brand" href="#inicio" aria-label="Física II, inicio"><span class="brand-mark">F<span>II</span></span><span><b>Física II</b><small>UTN FRC · Segundo parcial</small></span></a>
+    <nav aria-label="Contenido principal">
+      <a href="#formulas">Fórmulas</a>
+      <a href="#desarrollos">Desarrollos</a>
+      <a href="#alcance">Temario</a>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main class="wrap">
-
-  <!-- ===================== PRACTICAR ===================== -->
-  <section id="v-practicar" class="view" aria-labelledby="tab-practicar">
-
-    <div id="setup" class="setup">
-      <div class="setup-head">
-        <h1>Practicar</h1>
-        <p class="muted">Preguntas de opción múltiple de teórico y laboratorio, en orden aleatorio y corregidas al instante. Elegí qué entra y arrancá.</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">TU ESPACIO DE ESTUDIO</p>
+        <h1>Física II,<br><em>clara y a mano.</em></h1>
+        <p class="intro">Fórmulas de consulta rápida y desarrollos del parcial con sus pasos explicados brevemente. Todo en esta página.</p>
+        <div class="hero-actions"><a class="button primary" href="#formulas">Ir a las fórmulas <span>↓</span></a><a class="text-link" href="#desarrollos">Ver los 12 desarrollos</a></div>
       </div>
-
-      <div class="filters">
-        <fieldset class="fgroup">
-          <legend>Tipo</legend>
-          <label class="chip"><input type="checkbox" name="tipo" value="mc" checked><span>Opción múltiple</span></label>
-          <label class="chip"><input type="checkbox" name="tipo" value="dev"><span>Desarrollos (sin corrección)</span></label>
-        </fieldset>
-        <fieldset class="fgroup">
-          <legend>Parte</legend>
-          <label class="chip"><input type="checkbox" name="tag" value="teorico" checked><span>Teórico</span></label>
-          <label class="chip"><input type="checkbox" name="tag" value="laboratorio" checked><span>Laboratorio</span></label>
-        </fieldset>
-        <fieldset class="fgroup">
-          <legend>Dificultad</legend>
-          <label class="chip"><input type="checkbox" name="dif" value="1" checked><span>● Básica</span></label>
-          <label class="chip"><input type="checkbox" name="dif" value="2" checked><span>●● Media</span></label>
-          <label class="chip"><input type="checkbox" name="dif" value="3" checked><span>●●● Difícil</span></label>
-        </fieldset>
-        <fieldset class="fgroup">
-          <legend>Atajos</legend>
-          <label class="chip"><input type="checkbox" id="f-prof"><span>Solo lo que dijo el profe</span></label>
-          <label class="chip"><input type="checkbox" id="f-err"><span>Solo mis errores (<b id="n-err">0</b>)</span></label>
-        </fieldset>
-        <fieldset class="fgroup">
-          <legend>Cantidad</legend>
-          <label class="chip"><input type="radio" name="cant" value="15"><span>15</span></label>
-          <label class="chip"><input type="radio" name="cant" value="30" checked><span>30</span></label>
-          <label class="chip"><input type="radio" name="cant" value="0"><span>Todas</span></label>
-        </fieldset>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="charge plus">+</div><div class="charge minus">−</div>
+        <div class="field-line f1"></div><div class="field-line f2"></div><div class="field-line f3"></div>
+        <span class="art-label">\(\vec E\)</span><span class="art-caption">campo eléctrico</span>
       </div>
+      <div class="hero-meta"><span>01 <b>Fórmulas breves</b></span><span>02 <b>12 demostraciones</b></span><span>03 <b>Gráficos de apoyo</b></span></div>
+    </section>
 
-      <div class="setup-foot">
-        <button type="button" class="btn primary" id="start">Empezar <kbd>Enter</kbd></button>
-        <button type="button" class="btn ghost" id="start-devs">Solo desarrollos, por prioridad ★</button>
-        <span class="muted" id="pool-n"></span>
+    <section class="section" id="formulas">
+      <div class="section-head"><div><p class="eyebrow">CONSULTA RÁPIDA · U8–U11</p><h2>Hoja de fórmulas</h2></div><p>Relaciones esenciales, agrupadas por unidad. Tocá una unidad para saltar a ella.</p></div>
+      <nav class="unit-nav" aria-label="Índice de fórmulas"><a href="#u8">U8 <small>Capacitores</small></a><a href="#u9">U9 <small>Corriente</small></a><a href="#u10">U10 <small>Circuitos</small></a><a href="#u11">U11 <small>Biot–Savart</small></a></nav>
+      <div class="compare-intro"><div><span class="label">CLAVE PARA REDES</span><h3>Serie y paralelo: compará antes de calcular</h3></div><p>La misma conexión cambia según el elemento: identificá qué magnitud queda igual.</p></div>
+      <div class="compare-grid">
+        <article class="compare-card cap"><div class="compare-title"><span class="symbol">C</span><h4>Capacitores</h4></div>
+          <div class="topology"><div><b>EN SERIE</b><svg viewBox="0 0 300 70" role="img" aria-label="Dos capacitores en una rama en serie"><path d="M12 35H77 M91 20V50 M101 20V50 M101 35H184 M198 20V50 M208 20V50 M208 35H288"/><text x="78" y="15">C₁</text><text x="185" y="15">C₂</text></svg><p>Igual carga: <strong>Q₁ = Q₂ = Q</strong></p><div class="equation">\(\displaystyle \frac1{C_{eq}}=\sum_i\frac1{C_i}\)</div></div>
+          <div><b>EN PARALELO</b><svg viewBox="0 0 300 70" role="img" aria-label="Dos capacitores conectados entre los mismos nodos en paralelo"><path d="M20 10V60 M280 10V60 M20 20H130 M144 8V32 M154 8V32 M154 20H280 M20 50H130 M144 38V62 M154 38V62 M154 50H280"/><circle cx="20" cy="20" r="4"/><circle cx="280" cy="20" r="4"/><text x="128" y="8">C₁</text><text x="128" y="42">C₂</text></svg><p>Igual tensión: <strong>ΔV₁ = ΔV₂</strong></p><div class="equation">\(C_{eq}=\sum_i C_i\)</div></div></div>
+        </article>
+        <article class="compare-card res"><div class="compare-title"><span class="symbol">R</span><h4>Resistencias</h4></div>
+          <div class="topology"><div><b>EN SERIE</b><svg viewBox="0 0 300 70" role="img" aria-label="Dos resistencias en una rama en serie"><path d="M12 35H65 L73 25 85 45 97 25 109 45 121 25 133 35 H169 L177 25 189 45 201 25 213 45 225 25 233 35H288"/><text x="80" y="15">R₁</text><text x="184" y="15">R₂</text></svg><p>Igual corriente: <strong>I₁ = I₂ = I</strong></p><div class="equation">\(R_{eq}=\sum_i R_i\)</div></div>
+          <div><b>EN PARALELO</b><svg viewBox="0 0 300 70" role="img" aria-label="Dos resistencias conectadas entre los mismos nodos en paralelo"><path d="M20 10V60 M280 10V60 M20 20H120 L128 12 140 28 152 12 164 28 176 12 184 20H280 M20 50H120 L128 42 140 58 152 42 164 58 176 42 184 50H280"/><circle cx="20" cy="20" r="4"/><circle cx="280" cy="20" r="4"/><text x="142" y="8">R₁</text><text x="142" y="42">R₂</text></svg><p>Igual tensión: <strong>V₁ = V₂</strong></p><div class="equation">\(\displaystyle \frac1{R_{eq}}=\sum_i\frac1{R_i}\)</div></div></div>
+        </article>
       </div>
+      <figure class="graphic-card"><div class="graphic-copy"><span class="label">CAPACITOR RC</span><h3>Carga exponencial</h3><p>La tensión del capacitor se acerca a la de la fuente. La constante de tiempo marca la rapidez.</p><div class="equation">\(\tau=RC\qquad V_C(t)=\varepsilon(1-e^{-t/\tau})\)</div></div><svg class="rc-plot" viewBox="0 0 420 220" role="img" aria-label="Gráfico de carga RC, tensión creciente hacia epsilon según el tiempo"><path class="axis" d="M52 20V180H395"/><path class="guide" d="M52 60H395 M130 180V60"/><path class="curve" d="M52 180 C82 95 106 76 130 60 C182 28 250 22 395 22"/><text x="22" y="27">V<tspan baseline-shift="sub">C</tspan></text><text x="390" y="205">t</text><text x="20" y="65">ε</text><text x="118" y="202">τ</text><text x="0" y="185">0</text></svg></figure>
+      <div id="formula-content" class="formula-content" aria-live="polite"></div>
+      <figure class="graphic-card biot-card"><div class="graphic-copy"><span class="label">U11 · BIOT–SAVART</span><h3>Geometría del campo</h3><p>El aporte depende de la corriente, del elemento \(d\vec\ell\) y de su posición respecto del punto de observación.</p><div class="equation">\(d\vec B=\frac{\mu_0 I}{4\pi}\frac{d\vec\ell\times\hat r}{r^2}\)</div></div><svg viewBox="0 0 420 190" role="img" aria-label="Elemento de corriente dl, punto A y vector r entre ambos"><path class="wire" d="M35 42H380"/><path class="arrow" d="M100 42H155"/><text x="119" y="28">I</text><path class="geom" d="M230 42L165 145"/><circle class="point" cx="165" cy="145" r="5"/><text x="147" y="168">A</text><text x="197" y="91">r</text><path class="arrow" d="M218 42H252"/><text x="230" y="28">dℓ</text><circle class="field" cx="220" cy="115" r="14"/><path class="field" d="M210 105L230 125M230 105L210 125"/><text x="243" y="121">dB</text></svg></figure>
+    </section>
 
-      <div class="keys">
-        <span class="keys-t">Teclado</span>
-        <span><kbd>1</kbd>–<kbd>4</kbd> elegir opción</span>
-        <span><kbd>Enter</kbd> o <kbd>Espacio</kbd> mostrar / seguir</span>
-                <span><kbd>Esc</kbd> terminar</span>
-      </div>
-    </div>
+    <section class="section derivation-section" id="desarrollos">
+      <div class="section-head"><div><p class="eyebrow">EN EL ORDEN DEL APUNTE</p><h2>Los 12 desarrollos</h2></div><p>Cada demostración conserva sus pasos y agrega una explicación corta debajo de cada uno. Abrí la que quieras estudiar.</p></div>
+      <div class="dev-toolbar"><span><b>12</b> demostraciones · U7–U11</span><button id="toggle-all" type="button">Abrir todos</button></div>
+      <div id="development-content" class="development-content" aria-live="polite"></div>
+    </section>
 
-    <div id="run" class="run" hidden>
-      <div class="run-bar">
-        <span class="prog-t" id="prog-t"></span>
-        <div class="prog" aria-hidden="true"><i id="prog-i"></i></div>
-        <button type="button" class="btn ghost sm" id="quit">Terminar <kbd>Esc</kbd></button>
-      </div>
-      <article id="card" class="card" aria-live="polite"></article>
-    </div>
-
-    <div id="end" class="end" hidden></div>
-  </section>
-
-  <!-- ===================== DESARROLLOS ===================== -->
-  <section id="v-desarrollos" class="view" aria-labelledby="tab-desarrollos" hidden>
-    <div class="setup-head">
-      <h1>Desarrollos</h1>
-      <p class="muted">Formato de la hoja: consigna, dibujo esquemático y solo la lógica matemática. El porqué de cada paso está plegado y no se escribe en el examen.</p>
-    </div>
-    <div class="dev-bar">
-      <div class="seg" role="group" aria-label="Modo">
-        <button type="button" id="m-study" aria-pressed="true">Modo estudio</button>
-        <button type="button" id="m-exam" aria-pressed="false">Modo examen</button>
-      </div>
-      <div class="seg" role="group" aria-label="Orden">
-        <button type="button" id="o-tema" aria-pressed="true">Por tema</button>
-        <button type="button" id="o-prio" aria-pressed="false">Por prioridad ★</button>
-      </div>
-      <button type="button" class="btn ghost sm" id="dev-practice">Practicar uno por uno</button>
-      <span class="muted"><b id="done-n">0</b> de <span id="tot-n">0</span> escritos sin mirar</span>
-    </div>
-    <p class="muted small">Prioridad: ★★★★★ lo nombró el profe o lo puso de ejemplo · ★★★★ mismo tema y corto · ★★★ lo dio pero no lo nombró · ★★ menos probable · ★ planteo largo. "Por prioridad" y "Practicar uno por uno" van de 5★ a 1★, mezclando el orden dentro de cada nivel.</p>
-    <p class="muted small" id="exam-hint" hidden>En modo examen solo ves la consigna. Escribí en papel el dibujo y la matemática, después tocá cada recuadro para corregirte.</p>
-    <nav class="toc" id="toc" aria-label="Índice de desarrollos"></nav>
-    <div id="devlist" class="devlist"></div>
-  </section>
-
-  <!-- ===================== CÓMO ESTUDIAR ===================== -->
-  <section id="v-como" class="view" aria-labelledby="tab-como" hidden>
-    <div class="setup-head">
-      <h1>Cómo estudiar con esto</h1>
-      <p class="muted">Lo que pasó en el 1er parcial: 4 en preguntas y 0 en desarrollos. Este plan ataca las dos cosas.</p>
-    </div>
-    <div class="prose">
-      <h2>Material complementario</h2>
-      <p>Machete práctico de fórmulas y pasos para ejercicios de U8–U11, más 12 desarrollos teóricos paso a paso. U11 práctico llega hasta Biot–Savart inclusive.</p>
-      <p><a class="btn ghost" href="material/Machete_Fisica_II_U8_U11_Formulas_y_Desarrollos.pdf" target="_blank" rel="noopener">Abrir machete de estudio (PDF)</a></p>
-      <h2>Cómo toma Andrade</h2>
-      <ul>
-        <li><b>6 preguntas de 0,5 punto</b>, máximo dos renglones, "concéntrese en las palabras clave". Casi todas son <i>¿por qué…?</i>, <i>¿cómo es…?</i>, <i>¿de dónde proviene…?</i>: piden razonamiento, no definiciones.</li>
-        <li><b>2 desarrollos de 1 punto</b>, "solo la lógica matemática, sin comentarios, con un dibujo esquemático". Para este parcial dijo: <b>dos desarrollos simples</b>, por ejemplo Ohm, Gauss, capacitores o algo de potencial. Puso como ejemplo de corto la <b>corriente rectilínea infinita</b>.</li>
-        <li>Pregunta confirmada: <b>"θi y θf son iguales: ¿qué simetría tiene el problema y cómo se soluciona?"</b>. En Practicar está marcada como <span class="tagp">profe</span>.</li>
-      </ul>
-      <h2>Método para los desarrollos</h2>
-      <ol>
-        <li><b>Primero el dibujo.</b> El dibujo dicta la matemática: si dibujaste ρ, θ, dl y r, Biot–Savart sale solo.</li>
-        <li><b>Entendé los 3 o 4 pasos clave</b> con "Por qué cada paso". Con eso reconstruís una línea que te olvides.</li>
-        <li><b>Escribilo a mano sin mirar</b> (Modo examen), destapá y corregí. Tildá solo si salió completo.</li>
-        <li><b>Estudialos en cadena:</b> D21 → D22 → D23 · D05 → D06 → D07 → D08 · D01 → D02 → D03 · D11 → D12 → D14 · D17 → D18 · Ampère.</li>
-        <li><b>Repetí espaciado:</b> hoy, más tarde hoy los que fallaste, mañana todos, y la mañana del parcial solo los resultados recuadrados.</li>
-      </ol>
-      <h2>Método para las preguntas</h2>
-      <ol>
-        <li>Antes de mirar las opciones, pensá cómo lo responderías en dos renglones; después elegí. Las opciones correctas están escritas como respuesta de parcial, con las palabras clave.</li>
-        <li>Toda respuesta tiene que tener <b>dato + porque + la regla que lo justifica</b>.</li>
-        <li>Usá <b>Solo mis errores</b> al final de cada sesión.</li>
-      </ol>
-      <h2>Laboratorio (práctico de Brandán)</h2>
-      <p>El práctico trae 1 pregunta de laboratorio. Están todas etiquetadas <span class="tagl">laboratorio</span>: TP1 calorimetría (equivalente en agua y calor específico) y TP2 instrumentos de medición.</p>
-      <h2>Lo que muestra la carpeta de Andrade (curso 2019)</h2>
-      <ul>
-        <li>"Algo de potencial" en su curso es el <b>potencial de configuraciones simétricas</b>: carga puntual, plano (V lineal, sin cero en el infinito) e hilo (ΔV logarítmica). Están como D02, D02b y D02c.</li>
-        <li>En capacitores desarrolla <b>plano, cilíndrico, esférico y esfera aislada</b>, energía, serie y paralelo, y el dieléctrico aislado (U = U₀/K) o conectado (U = K·U₀).</li>
-        <li>En magnetismo: <b>Lorentz, Biot–Savart (segmento, hilo infinito, anillo)</b>, <b>Ampère</b> a partir del hilo, solenoide, toroide y <b>fuerzas sobre conductores</b>.</li>
-        <li>Notación: llama <b>a</b> a la distancia al conductor, y en el solenoide <b>N</b> son vueltas por metro y <b>n</b> el total. Definí siempre tu letra en la hoja.</li>
-      </ul>
-      <p class="warn"><b>Dos errores de la carpeta:</b> dice que las corrientes paralelas del mismo sentido se rechazan (se <b>atraen</b>) y que para la esfera aislada rₑ → 0 (es rₑ → ∞). No los copies.</p>
-      <p class="warn">Faltaste a 2 de las 4 clases: lo que no está acá puede haberse dado igual. Pedile a un compañero los apuntes de esas clases, sobre todo si hubo inducción.</p>
-    </div>
-  </section>
-</main>
-
-<script src="js/preguntas.js"></script>
-<script src="js/desarrollos.js"></script>
-<script src="js/leyendas.js"></script>
-<script src="js/desarrollos-extra.js"></script>
-<script src="js/estrellas.js"></script>
-<script src="js/preguntas-extra.js"></script>
-<script src="js/preguntas-mc2.js"></script>
-<script src="js/app.js"></script>
+    <section class="section scope" id="alcance"><div><p class="eyebrow">ÍNDICE DEL TEMARIO</p><h2>Qué entra en este material</h2><p>Contenido organizado para el segundo parcial de Física II, UTN FRC.</p></div><div class="scope-grid"><div><b>U7</b><span>Potencial electrostático y ley de Gauss</span></div><div><b>U8</b><span>Capacitores, carga y circuitos equivalentes</span></div><div><b>U9</b><span>Corriente, resistividad, potencia y circuitos RC</span></div><div><b>U10</b><span>Corriente continua, Kirchhoff e instrumentos</span></div><div><b>U11</b><span>Magnetismo hasta la ley de Biot–Savart inclusive</span></div></div><p class="scope-note">En la hoja práctica de U8 no se incluyen dieléctricos. En U11 quedan fuera Ampère, solenoides, toroides y fuerzas magnéticas prácticas. El desarrollo teórico de Lorentz se mantiene porque aparece en el apunte del profesor.</p></section>
+  </main>
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">F<span>II</span></span><span><b>Física II</b><small>UTN FRC</small></span></a><span>Material de estudio · Segundo parcial</span><a href="#inicio">Volver arriba ↑</a></footer>
 </body>
 </html>
