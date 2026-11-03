@@ -12,7 +12,7 @@ Preguntero y desarrollos para el 2º parcial de Física II (UTN FRC): teórico d
 
 ## Material de estudio
 
-- [Descargar el PDF acumulativo de Física II](material/Fisica_II_UTN_FRC_Modelos_U7_U9_Demostraciones.pdf). Incluye modelos de U7–U9, índice del temario U7–U11 (U11 hasta Biot–Savart), demostraciones, explicaciones complementarias, fórmulas y gráficos.
+- [Descargar el machete de fórmulas y desarrollos de Física II](material/Machete_Fisica_II_U8_U11_Formulas_y_Desarrollos.pdf). Reúne recetas de resolución para los ejercicios prácticos de U8–U11 y los 12 desarrollos teóricos, con gráficos y unidades. U11 práctico llega hasta Biot–Savart inclusive.
 
 ## Teclado
 
