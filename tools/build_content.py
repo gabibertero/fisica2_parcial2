@@ -215,16 +215,16 @@ def build_questions():
                 current_unit = None
             continue
         if line.startswith("### Pregunta "):
-            result.append(f'<details class="question-card"><summary>{inline(line[4:])}</summary><div class="question-body">')
+            result.append(f'<article class="question-card"><h4 class="question-title">{inline(line[4:])}</h4><div class="question-body">')
         elif line.startswith("**Consigna:**"):
             result.append(f'<p class="question-prompt">{inline(line.removeprefix("**Consigna:**").strip())}</p>')
         elif line.startswith("**Gráfico:**"):
             key = escape(line.removeprefix("**Gráfico:**").strip(), quote=True)
             result.append(f'<figure class="answer-diagram" data-question-diagram="{key}"></figure>')
         elif line.startswith("**Respuesta modelo:**"):
-            result.append(f'<p class="model-answer"><b>Respuesta modelo</b><br>{inline(line.removeprefix("**Respuesta modelo:**").strip())}</p></div></details>')
+            result.append(f'<p class="model-answer"><b>Respuesta modelo</b><br>{inline(line.removeprefix("**Respuesta modelo:**").strip())}</p></div></article>')
         elif line.startswith("**Respuesta breve:**"):
-            result.append(f'<p class="model-answer"><b>Respuesta breve</b><br>{inline(line.removeprefix("**Respuesta breve:**").strip())}</p></div></details>')
+            result.append(f'<p class="model-answer"><b>Respuesta breve</b><br>{inline(line.removeprefix("**Respuesta breve:**").strip())}</p></div></article>')
         elif line:
             result.append(f'<p>{inline(line)}</p>')
     result.append("</section>")

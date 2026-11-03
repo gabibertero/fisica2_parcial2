@@ -27,6 +27,7 @@ main{max-width:1120px;margin:auto;padding:0 28px}.hero{min-height:440px;padding:
 .question-unit{min-width:0}
 .question-unit>h3{font:700 20px Manrope,sans-serif;margin:0 0 12px;color:var(--ink)}
 .question-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 12px;box-shadow:0 4px 14px rgba(31,52,81,.04)}
+.question-title{font:700 16px/1.4 Manrope,sans-serif;color:var(--ink);margin:0 0 10px}
 .question-prompt{font-size:14px;line-height:1.5;font-weight:700;color:var(--ink);margin:0 0 10px}
 .question-body{display:grid;gap:10px;font-size:13px;line-height:1.6;color:var(--muted);min-width:0}
 .question-body p{margin:0}
@@ -41,6 +42,7 @@ main{max-width:1120px;margin:auto;padding:0 28px}.hero{min-height:440px;padding:
 @media(max-width:580px){
   .question-unit>h3{font-size:18px}
   .question-card{padding:14px 13px}
+  .question-title{font-size:15px}
   .question-prompt{font-size:13px}
   .question-body,.model-answer{font-size:12px}
 }

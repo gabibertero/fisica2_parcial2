@@ -3,7 +3,7 @@ const typeset = (root) => window.MathJax?.typesetPromise?.([root]);
 async function loadContent(target, path) {
   const host = document.querySelector(target);
   try {
-    const response = await fetch(`${path}?v=5`);
+    const response = await fetch(`${path}?v=6`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     host.innerHTML = await response.text();
     if (target === "#development-content") {
@@ -38,12 +38,6 @@ Promise.all([
   loadContent("#question-content", "content/preguntas.html"),
   loadContent("#development-content", "content/desarrollos.html")
 ]);
-
-document.querySelector("#question-content").addEventListener("toggle", (event) => {
-  if (event.target.matches("details.question-card") && event.target.open) {
-    typeset(event.target);
-  }
-}, true);
 
 document.querySelector("#toggle-all").addEventListener("click", (event) => {
   const cards = [...document.querySelectorAll("#development-content details")];
