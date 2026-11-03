@@ -10,6 +10,10 @@ Preguntero y desarrollos para el 2º parcial de Física II (UTN FRC): teórico d
 - **Desarrollos**: 30 desarrollos con dibujo esquemático y solo la lógica matemática, como pide la consigna, con qué es cada letra y cómo leer el dibujo. Prioridad de 1 a 5 estrellas: "por prioridad" los da de 5★ a 1★, mezclando dentro de cada nivel. El modo examen tapa todo menos la consigna.
 - **Laboratorio**: TP1 calorimetría y TP2 instrumentos de medición, etiquetados como laboratorio.
 
+## Material de estudio
+
+- [Descargar el PDF acumulativo de Física II](material/Fisica_II_UTN_FRC_Modelos_U7_U9_Demostraciones.pdf). Incluye modelos de U7–U9, índice del temario U7–U11 (U11 hasta Biot–Savart), demostraciones, explicaciones complementarias, fórmulas y gráficos.
+
 ## Teclado
 
 | Tecla | Acción |
