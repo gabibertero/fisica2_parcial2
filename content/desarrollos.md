@@ -12,7 +12,7 @@
 ## Orden de los 12 desarrollos del apunte
 
 ### 1. U7 · Diferencia de potencial y campo electrostático
-**Fuente:** 2 Parcial Teórico, p. 1. **Dibujo:** dos puntos inicial/final, trayectoria, (d\vec\ell), \(\vec E\) y fuerza externa.
+**Fuente:** 2 Parcial Teórico, p. 1. **Dibujo:** el campo uniforme \(\vec E\) ejerce sobre una carga positiva \(q_p\) una fuerza \(\vec F_e=q_p\vec E\); para moverla lentamente, la fuerza aplicada \(\vec F_a=-\vec F_e\) apunta en sentido contrario. El desplazamiento diferencial \(d\vec\ell\) es tangente al camino de \(i\) a \(f\).
 
 1. \(\vec F_a=-\vec F_e=-q_p\vec E\)  
    La fuerza aplicada compensa la fuerza eléctrica.

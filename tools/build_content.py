@@ -148,7 +148,7 @@ def build_developments():
         if not title_match:
             continue
         number, title = title_match.groups()
-        result.append(f'<details id="desarrollo-{number}"><summary><span>{int(number):02d}</span>{inline(title)}</summary><div class="dev-body">')
+        result.append(f'<article id="desarrollo-{number}" class="development-card"><h3 class="dev-title"><span>{int(number):02d}</span>{inline(title)}</h3><div class="dev-body">')
         lines = chunk.splitlines()[1:]
         steps = []
         notes = []
@@ -181,7 +181,7 @@ def build_developments():
         if meta:
             result.append(f'<p class="dev-meta">{inline(meta)}</p>')
         if drawing:
-            result.append(f'<figure class="dev-drawing" data-diagram="{int(number)}" role="img" aria-label="{inline(drawing)}"></figure>')
+            result.append(f'<figure class="dev-drawing" data-diagram="{int(number)}"><figcaption>{inline(drawing)}</figcaption></figure>')
         if steps:
             result.append("<ol>")
             for equation, explanation in steps:
@@ -189,7 +189,7 @@ def build_developments():
             result.append("</ol>")
         for note in notes:
             result.append(f'<p class="dev-note">{inline(note)}</p>')
-        result.append("</div></details>")
+        result.append("</div></article>")
     (ROOT / "content/desarrollos.html").write_text("\n".join(result))
 
 

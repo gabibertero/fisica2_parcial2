@@ -61,3 +61,18 @@ main{max-width:1120px;margin:auto;padding:0 28px}.hero{min-height:440px;padding:
 .quiz-actions kbd{font:600 10px 'DM Sans',sans-serif;padding:2px 5px;border:1px solid #ffffff70;border-radius:4px;background:#ffffff20}.quiz-actions .secondary{background:var(--teal);color:#fff}.quiz-result{text-align:center;padding:30px 22px}.quiz-result h3{font:750 27px Manrope,sans-serif;margin:6px 0}.quiz-result-copy{color:var(--muted);font-size:13px;margin-bottom:20px}.quiz-result .quiz-actions{justify-content:center}.quiz-app :focus-visible,.quiz-launch :focus-visible{outline:3px solid #e3ae4e;outline-offset:3px}
 @media(max-width:580px){.quiz-launch{align-items:flex-start;flex-direction:column;padding:14px}.quiz-launch button{width:100%;justify-content:center}.quiz-panel{padding:16px 13px}.quiz-topline{gap:8px;font-size:10px}.quiz-option{padding:11px 9px;gap:8px;font-size:12px}.quiz-actions{gap:7px}.quiz-actions .text-link{margin-left:auto}.quiz-result h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.quiz-progress span,.quiz-option{transition:none}}
+
+/* Desarrollos visibles y en secuencia, sin tarjetas desplegables. */
+.development-content{grid-template-columns:1fr;gap:16px}
+.development-card{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;scroll-margin-top:88px;box-shadow:0 4px 14px rgba(31,52,81,.04)}
+.dev-title{display:flex;align-items:center;gap:11px;margin:0;padding:16px 18px;font:700 16px/1.4 Manrope,sans-serif;color:var(--ink)}
+.dev-title span{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:8px;background:var(--blue-soft);color:var(--blue);font-size:13px}
+.development-content .dev-body{padding:0 18px 16px;border-top:1px solid var(--line)}
+.development-content .dev-body li{font-size:14px}
+.development-content .dev-body li p{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45;font-size:12px}
+.development-content .dev-drawing{text-align:center}
+.development-content .dev-drawing svg{width:100%;max-width:760px;max-height:250px;margin:0 auto 7px}
+.dev-drawing figcaption{font-size:12px;line-height:1.45;color:var(--muted)}
+.development-content .dev-drawing figcaption mjx-container{display:inline;overflow:visible;padding:0}
+.development-content .dev-drawing figcaption svg{display:inline;width:auto!important;height:1em;max-width:none;max-height:none;vertical-align:-.15em;margin:0}
+@media(max-width:580px){.dev-title{padding:14px 13px;font-size:14px}.development-content .dev-body{padding:0 13px 14px}.development-content .dev-body li{font-size:13px}.dev-drawing figcaption{font-size:11px}}

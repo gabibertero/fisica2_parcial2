@@ -3,12 +3,13 @@ const typeset = (root) => window.MathJax?.typesetPromise?.([root]);
 async function loadContent(target, path) {
   const host = document.querySelector(target);
   try {
-    const response = await fetch(`${path}?v=6`);
+    const response = await fetch(`${path}?v=7`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     host.innerHTML = await response.text();
     if (target === "#development-content") {
       host.querySelectorAll("[data-diagram]").forEach((figure) => {
-        figure.innerHTML = window.DIAGRAMAS?.[figure.dataset.diagram] || "";
+        const diagram = window.DIAGRAMAS?.[figure.dataset.diagram];
+        if (diagram) figure.insertAdjacentHTML("afterbegin", diagram);
       });
     }
     if (target === "#question-content") {
@@ -38,14 +39,6 @@ Promise.all([
   loadContent("#question-content", "content/preguntas.html"),
   loadContent("#development-content", "content/desarrollos.html")
 ]);
-
-document.querySelector("#toggle-all").addEventListener("click", (event) => {
-  const cards = [...document.querySelectorAll("#development-content details")];
-  const openAll = cards.some((card) => !card.open);
-  cards.forEach((card) => { card.open = openAll; });
-  event.currentTarget.textContent = openAll ? "Cerrar todos" : "Abrir todos";
-  if (openAll) typeset(document.querySelector("#development-content"));
-});
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener("click", () => {
   const target = document.querySelector(link.getAttribute("href"));
