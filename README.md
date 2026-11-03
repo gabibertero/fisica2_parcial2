@@ -4,7 +4,7 @@ Apuntes de estudio publicados como sitio web estático en GitHub Pages. La pági
 
 ## Contenido
 
-- **Fórmulas:** U8 capacitores y carga (sin dieléctricos); U9 corriente, resistividad, potencia y RC; U10 circuitos de corriente continua; U11 hasta Biot–Savart inclusive.
+- **Fórmulas:** hoja recortada a las relaciones necesarias para los ejercicios prácticos indicados en `content/formulas.md`; incluye asociaciones de capacitores y resistencias, Kirchhoff, variación térmica, campos de hilo y espira.
 - **Comparación de redes:** asociación serie y paralelo de capacitores y resistencias, con diagramas y magnitudes comunes.
 - **Desarrollos:** 12 demostraciones en el orden del apunte del profesor, con explicaciones breves por paso.
 - **Gráficos:** redes, curva de carga RC, geometría de Biot–Savart y esquemas conceptuales.

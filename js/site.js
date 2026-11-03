@@ -3,7 +3,7 @@ const typeset = (root) => window.MathJax?.typesetPromise?.([root]);
 async function loadContent(target, path) {
   const host = document.querySelector(target);
   try {
-    const response = await fetch(`${path}?v=3`);
+    const response = await fetch(`${path}?v=4`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     host.innerHTML = await response.text();
     if (target === "#development-content") {

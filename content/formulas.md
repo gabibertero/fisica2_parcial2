@@ -1,79 +1,50 @@
-# Física II · Machete de fórmulas U8–U11
+# Física II · Fórmulas para los ejercicios seleccionados
 
-## U8 · Capacitores y carga
+Esta hoja incluye solo las relaciones necesarias para resolver los ejercicios indicados de la guía práctica.
 
-| Relación | Fórmula |
+## U8 · Capacitores
+
+| Situación | Fórmulas necesarias |
 |---|---|
-| Capacidad | `C = Q/ΔV` · `Q = CΔV` |
-| Capacitores en **serie** | `1/Ceq = Σ(1/Ci)` · **comparten Q** · `ΔVtotal = ΣΔVi` |
-| Capacitores en **paralelo** | `Ceq = ΣCi` · **comparten ΔV** · `Qtotal = ΣQi` |
-| Paralelo de dos capacitores | `Ceq = C1C2/(C1+C2)` |
-| Carga/energía | `U = ½C(ΔV)² = Q²/(2C) = ½QΔV` |
-| Reparto de carga aislada | `ΔVf = \dfrac{ΣsiQi}{ΣCi}` · `Qif = CiΔVf` (`si=±1`, según polaridad inicial) · `ΣsiQi` se conserva |
-| Cambio con batería | conectada: `ΔV` cte, `Q=CΔV` · desconectada: `Q` cte, `ΔV=Q/C` |
+| Capacitores en **serie** | `1/Ceq = Σ(1/Ci)` · comparten carga: `Q1 = Q2 = …` · `ΔVtotal = ΣΔVi` |
+| Capacitores en **paralelo** | `Ceq = ΣCi` · comparten tensión: `ΔV1 = ΔV2 = …` · `Qtotal = ΣQi` |
+| Carga y tensión | `Q = CΔV` |
+| Reparto de carga con la fuente desconectada | Se conserva la carga total: `Qinicial = ΣQfinal` · la red equivalente final cumple `ΔVf = Qinicial/Ceq` · cada capacitor en paralelo tiene `Qi = CiΔVf` |
+| Energía almacenada y cambio de energía | `U = ½C(ΔV)²` · red equivalente: `U = ½Ceq(ΔV)²` · `ΔU = U_f − U_i` |
 
-## U9 · Corriente y resistividad
+## U9 · Corriente eléctrica
 
-| Magnitud | Fórmula |
+| Situación | Fórmulas necesarias |
 |---|---|
-| Corriente y carga | `I = ΔQ/Δt` · `Q = It` |
-| Densidad/deriva | `J = I/A` · `I = n|q|Avd` · `vd = I/(n|q|A)` |
-| Campo/conductor | `E = ρJ` · `|ΔV| = EL` · `R = ρL/A` · `V = IR` |
-| Sección circular | `A = πD²/4` · `m = δmAL` |
-| Temperatura | `R(T)=R₀[1+α(T−T₀)]` |
-| Resistores equivalentes | serie: `Req=ΣRi` (misma `I`) · paralelo: `1/Req=Σ(1/Ri)` (misma `V`) · dos en paralelo: `Req=R1R2/(R1+R2)` |
-| Potencia/energía/costo | `P=VI=I²R=V²/R` · `W=Pt` · Costo [moneda] = Energía [kWh] × tarifa [moneda/kWh] |
-| Calor eléctrico | `Qcal=ηPt` · `Qcal=mcΔT` · `Qfase=mLf` o `mLv` |
-| Fuente con resistencia interna | `I=ε/(R+rint)` · descargando: `Vt=ε−Irint=IR` · `Icc=ε/rint` |
-| Resistor: límite de potencia | `Vmax=\sqrt{PmaxR}` · `Imax=\sqrt{\dfrac{Pmax}{R}}` |
-
-### Circuito RC
-
-`τ=RC`
-
-| Proceso | Carga | Tensión | Corriente |
-|---|---|---|---|
-| Carga | `q=Cε(1−e^{−\dfrac{t}{τ}})` | `VC=ε(1−e^{−\dfrac{t}{τ}})` | `I=(ε/R)e^{−\dfrac{t}{τ}}` |
-| Descarga | `q=q₀e^{−\dfrac{t}{τ}}` | `VC=V₀e^{−\dfrac{t}{τ}}` | `|I|=(V₀/R)e^{−\dfrac{t}{τ}}` |
-
-`tcarga=−τ \ln(1−q/Qf)` · `tdescarga=−τ \ln(q/q₀)` · `90\%=2,30τ` · `99\%=4,61τ`
-`UC=½CVC²` · `WR=½Cε²(1−e^{−\dfrac{2t}{τ}})` · `Wfuente=Cε²(1−e^{−\dfrac{t}{τ}})` · `Rfuga=\dfrac{−t}{C\ln(\dfrac{V}{V₀})}`
+| Ley de Ohm | `ΔV = IR` |
+| Resistencias en **serie** | `Req = ΣRi` · comparten corriente |
+| Resistencias en **paralelo** | `1/Req = Σ(1/Ri)` · comparten tensión |
+| Ley de mallas de Kirchhoff | En una malla cerrada: `ΣΔV = 0` |
+| Variación de resistencia con temperatura | `R(T) = R₀[1 + α(T − T₀)]` · `R₀ = R(T)/[1 + α(T − T₀)]` |
 
 ## U10 · Circuitos de corriente continua
 
-| Ley / instrumento | Fórmula |
+| Situación | Fórmulas necesarias |
 |---|---|
-| Nodo (Kirchhoff) | `ΣIentrantes = ΣIsalientes` |
-| Malla (Kirchhoff) | `ΣΔV = 0` |
-| Resistor | `ΔV = IR` |
-| Corrientes de rama | serie: `I1=I2=…` · paralelo: `Ii=Vi/Ri` |
-| Divisor de tensión en serie | `Vi = Vtotal Ri/ΣR` |
-| Divisor de corriente, dos ramas | `I1=Itotal R2/(R1+R2)` · `I2=Itotal R1/(R1+R2)` |
-| Amperímetro ideal | `RA≈0` · conexión en serie |
-| Voltímetro ideal | `RV→∞` · conexión en paralelo |
-| Galvanómetro → amperímetro (shunt) | `Rsh=IgRg/(Imax−Ig)` |
-| Galvanómetro con resistencia `Rx` en serie y shunt | `Rx=Rsh\dfrac{Imax−Ig}{Ig}−Rg` (guía, ej. 13) |
-| Galvanómetro → voltímetro (multiplicadora) | `Rm=Vmax/Ig−Rg` (guía, ej. 14) |
-| Wheatstone balanceado | `Ig=0` · `Ra/Rb=Rc/Rd` (resistencias de brazos opuestos; usar la ubicación del esquema) |
+| Resistencias en **serie** | `Req = ΣRi` · misma corriente en todos los elementos |
+| Resistencias en **paralelo** | `1/Req = Σ(1/Ri)` · misma tensión en cada rama |
+| Ley de Ohm | `ΔV = IR` |
+| Ley de nodos | `ΣIentrantes = ΣIsalientes` |
+| Ley de mallas | `ΣΔV = 0` |
+| Medidores ideales (ej. 10.3) | Amperímetro: `RA≈0`, se conecta en serie · voltímetro: `RV→∞`, se conecta en paralelo |
 
-## U11 · Biot–Savart inclusive
+## U11 · Campo magnético
 
-| Configuración | Campo magnético |
+| Situación | Fórmulas necesarias |
 |---|---|
-| Elemento de corriente | `d\vec B=\dfrac{\mu_0I}{4\pi}\dfrac{d\vec\ell\times\hat r}{r^2}` |
-| Hilo recto infinito | `B=μ₀I/(2πr)` |
-| Segmento finito | `B=μ₀I/(4πr)(sinθ₁+sinθ₂)`; θ desde la perpendicular, positivos; suma si la proyección cae entre extremos y diferencia de magnitudes si queda fuera |
-| Segmento simétrico, largo `2a` | `B=\dfrac{μ₀Ia}{2πr\sqrt{r²+a²}}` |
-| Espira circular, eje a distancia `z` | `Bz=\dfrac{μ₀Ia²}{2(a²+z²)^{\frac{3}{2}}}` |
-| Espira, centro (`z=0`) | `B=μ₀I/(2a)` |
-| Bobina circular de `N` vueltas | `Btotal=NBespira` |
-| Superposición | `\vec B_{total}=\sum_i\vec B_i` · campo nulo: `\sum_i\vec B_i=0` |
-| Hilo y campo terrestre perpendiculares | `tanθ=Bhilo/BT` · `BR=\sqrt{Bhilo²+BT²}` |
+| Hilo recto largo | `B = μ₀I/(2πr)` |
+| Superposición de campos | `\vec B_{total} = \sum_i\vec B_i` · sumá vectorialmente los aportes y determiná el sentido con la regla de la mano derecha |
+| Espira circular, sobre su eje | `B_z = \dfrac{μ₀Ia²}{2(a² + z²)^{\frac{3}{2}}}` |
+| Espira circular, en el centro (`z = 0`) | `B = μ₀I/(2a)` |
+| Ley de Biot–Savart, para obtener el campo de la espira | `d\vec B = \dfrac{μ₀I}{4π}\dfrac{d\vec\ell × \hat r}{r²}` |
 
 ## Símbolos y unidades SI
 
-`Q,q` [C] · `Qcal` [J o cal] · `I,Ig,Imax,Icc` [A] · `t,τ` [s] · `V,ΔV,ε,Vmax` [V] · `R,rint,Rg,Rsh,Rm,Rx,Ra…Rd` [Ω] · `C` [F] · `U,W` [J] · `P` [W] · `A` [m²] · `d,L,D,a,z,r,ℓ` [m] · `J` [A/m²] · `n` [m⁻³] · `vd` [m/s] · `E` [V/m] · `ρ` [Ω·m] · `δm` [kg/m³] · `m` [kg o g] · `T,T₀,ΔT` [K o °C] · `α` [K⁻¹] · `η,sᵢ,N` [adimensional] · `c` [J/(kg·K) o cal/(g·°C)] · `Lf,Lv` [J/kg o cal/g] · `μ₀=4π×10⁻⁷` [T·m/A] · `B` [T] · `θ,θ₁,θ₂` [° o rad] · `tarifa` [moneda/kWh].
+`C, Ceq` capacidad [F] · `Q` carga [C] · `ΔV` tensión [V] · `U` energía [J] · `R, Req, Ri, R₀` resistencia [Ω] · `I` corriente [A] · `T, T₀, ΔT` temperatura [°C o K] · `α` coeficiente térmico [°C⁻¹ o K⁻¹] · `B` campo magnético [T] · `μ₀ = 4π×10⁻⁷` [T·m/A] · `r, a, z, ℓ` distancia o longitud [m].
 
-`1 kWh=3,6×10⁶ J` · `1 cal=4,186 J` · `1 G=10⁻⁴ T` · `1 mA=10⁻³ A` · `1 μC=10⁻⁶ C` · `1 mm²=10⁻⁶ m²`
-
-**Alcance:** U8 sin dieléctricos. U11 práctico hasta Biot–Savart: hilos y espiras; quedan fuera solenoides, toroides y fuerzas magnéticas. La demostración teórica de Lorentz se conserva en la sección de desarrollos.
+**Ejercicios incluidos:** U8: 11, 14, 15, 18 y 22 · U9: 10, 11, 23, 26 y 27 · U10: 1, 2, 3, 6 y 7 · U11: 2, 6 y 8.
