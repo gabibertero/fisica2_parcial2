@@ -44,6 +44,16 @@
 
 **Respuesta modelo:** Un capacitor almacena carga y energía eléctrica en su campo eléctrico. Su capacidad es \(C=Q/\Delta V\) y representa cuánta carga puede almacenar por unidad de diferencia de potencial.
 
+### Pregunta 9 · Polarización de un dieléctrico
+**Consigna:** ¿Qué significa que un dieléctrico se polarice al colocarlo en un campo eléctrico?
+
+**Respuesta modelo:** Sus cargas positivas y negativas se desplazan ligeramente en sentidos opuestos, sin circular libremente. Esa separación genera un campo interno que se opone parcialmente al campo aplicado.
+
+### Pregunta 10 · Dieléctrico y capacidad
+**Consigna:** ¿Qué es un dieléctrico y por qué aumenta la capacidad de un capacitor cuando se introduce entre sus placas?
+
+**Respuesta modelo:** Un dieléctrico es un material aislante que se coloca entre las placas. Al polarizarse, genera un campo opuesto al de las placas y aumenta la capacidad de almacenar carga para un mismo voltaje. Si el capacitor está desconectado, su carga no aumenta; disminuye su diferencia de potencial.
+
 ### Pregunta 11 · Energía del capacitor
 **Consigna:** ¿Dónde se almacena la energía de un capacitor y de qué magnitudes depende?
 
